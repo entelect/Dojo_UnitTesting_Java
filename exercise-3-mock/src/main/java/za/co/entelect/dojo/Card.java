@@ -4,9 +4,11 @@ package za.co.entelect.dojo;
  * Our domain object
  */
 public class Card {
+
+    private final String cardNumber;
+    private final String pinBlock;
+
     private String track2;
-    private String cardNumber;
-    private String pinBlock;
     private double availableBalance;
 
     public Card(String aTrack2, String aPinBlock, double aAvailableBalance) {

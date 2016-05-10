@@ -2,37 +2,38 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <parent>
-        <groupId>za.co.entelect.dojo</groupId>
-        <artifactId>java-unit-testing</artifactId>
-        <version>MOO-SNAPSHOT</version>
-    </parent>
-
-    <artifactId>exercise-3-mock</artifactId>
+    <groupId>za.co.entelect.dojo</groupId>
+    <artifactId>java-unit-testing</artifactId>
     <version>MOO-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
-    <name>exercise3</name>
+    <name>unit-testing</name>
     <url>https://bitbucket.org/pieterbo-entelect/dojo-unittest</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>4.12</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.mockito</groupId>
-            <artifactId>mockito-all</artifactId>
-            <version>1.10.19</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>exercise-1-fix</module>
+        <module>exercise-2-tdd</module>
+        <module>exercise-3-mock</module>
+        <module>exercise-4-integrate</module>
+    </modules>
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>junit</groupId>
+                <artifactId>junit</artifactId>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.mockito</groupId>
+                <artifactId>mockito-all</artifactId>
+                <version>1.10.19</version>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
     <build>
         <pluginManagement>
             <plugins>
