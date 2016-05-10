@@ -1,4 +1,4 @@
-package za.co.entelect.dojo.validation.enums;
+package za.co.entelect.dojo.enums;
 
 public enum ResponseEnum {
     TRACK2_INVALID_LENGTH("01", "Track 2 data is too short or too long"),

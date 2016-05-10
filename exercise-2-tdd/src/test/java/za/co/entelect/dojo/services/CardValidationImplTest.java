@@ -1,7 +1,9 @@
-package za.co.entelect.dojo.validation;
+package za.co.entelect.dojo.services;
 
 import org.junit.Assert;
 import org.junit.Test;
+import za.co.entelect.dojo.services.CardValidation;
+import za.co.entelect.dojo.services.CardValidationImpl;
 
 
 public class CardValidationImplTest {

@@ -1,6 +1,6 @@
-package za.co.entelect.dojo.validation;
+package za.co.entelect.dojo.services;
 
-public interface CardValidation {
+public interface ValidationService {
 
     public boolean isValidCardNumber(String ccNumber);
 

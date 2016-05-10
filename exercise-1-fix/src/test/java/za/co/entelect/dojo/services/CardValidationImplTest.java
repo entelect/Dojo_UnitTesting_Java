@@ -1,7 +1,8 @@
-package za.co.entelect.dojo.validation;
+package za.co.entelect.dojo.services;
 
 import org.junit.Assert;
 import org.junit.Test;
+import za.co.entelect.dojo.services.CardValidation;
 
 
 public class CardValidationImplTest {
@@ -26,5 +27,4 @@ public class CardValidationImplTest {
         String cardNumber = "4388576018402626";
         Assert.assertFalse(validation.isValidCardNumber(cardNumber));
     }
-
 }

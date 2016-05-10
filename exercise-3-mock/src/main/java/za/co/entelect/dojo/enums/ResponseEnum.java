@@ -1,10 +1,12 @@
-package za.co.entelect.dojo.validation.enums;
+package za.co.entelect.dojo.enums;
 
 public enum ResponseEnum {
     TRACK2_INVALID_LENGTH("01", "Track 2 data is too short or too long"),
-    INVALID_CARD("02", "Invalid card number received"),
-    INVALID_EXP_DATE("03", "Invalid expiry date"),
-    INVALID_SERVICE_CODE("04", "Invalid service code");
+    INVALID_CARD("02", "You do not exist. Go away."),
+    INVALID_EXP_DATE("03", "Retirement pending"),
+    INVALID_SERVICE_CODE("04", "Invalid service code"),
+    INSUFFICIENT_FUNDS("05", "Work harder"),
+    INVALID_PIN("06", "Arrest pending");
 
     private String code;
     private String message;

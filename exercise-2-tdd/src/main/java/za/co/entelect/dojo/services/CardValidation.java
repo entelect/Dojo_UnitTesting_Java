@@ -1,4 +1,4 @@
-package za.co.entelect.dojo.validation;
+package za.co.entelect.dojo.services;
 
 public interface CardValidation {
 

@@ -1,4 +1,4 @@
-package za.co.entelect.dojo.validation.exceptions;
+package za.co.entelect.dojo.exceptions;
 
 import za.co.entelect.dojo.validation.enums.ResponseEnum;
 

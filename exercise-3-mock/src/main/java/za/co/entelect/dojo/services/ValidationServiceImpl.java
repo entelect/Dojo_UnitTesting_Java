@@ -1,9 +1,9 @@
-package za.co.entelect.dojo.validation;
+package za.co.entelect.dojo.services;
 
-import za.co.entelect.dojo.validation.enums.ResponseEnum;
-import za.co.entelect.dojo.validation.exceptions.ValidationException;
+import za.co.entelect.dojo.enums.ResponseEnum;
+import za.co.entelect.dojo.exceptions.ValidationException;
 
-public class CardValidationImpl implements CardValidation {
+public class ValidationServiceImpl implements ValidationService {
 
     int[][] serviceCodeValues = new int[][]{
             {1,2,5,6,7,9},

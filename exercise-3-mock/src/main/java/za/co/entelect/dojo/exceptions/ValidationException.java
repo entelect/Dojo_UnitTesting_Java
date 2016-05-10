@@ -1,6 +1,6 @@
-package za.co.entelect.dojo.validation.exceptions;
+package za.co.entelect.dojo.exceptions;
 
-import za.co.entelect.dojo.validation.enums.ResponseEnum;
+import za.co.entelect.dojo.enums.ResponseEnum;
 
 public class ValidationException extends RuntimeException {
     ResponseEnum responseEnum;
