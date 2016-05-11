@@ -1,9 +1,11 @@
 package za.co.entelect.dojo.services;
 
+import org.springframework.stereotype.Component;
 import za.co.entelect.dojo.Card;
 import za.co.entelect.dojo.enums.ResponseEnum;
 import za.co.entelect.dojo.exceptions.AccountException;
 
+@Component
 public class AccountServiceImpl implements AccountService {
 
     @Override

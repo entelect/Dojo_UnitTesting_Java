@@ -1,8 +1,10 @@
 package za.co.entelect.dojo.services;
 
+import org.springframework.stereotype.Component;
 import za.co.entelect.dojo.enums.ResponseEnum;
 import za.co.entelect.dojo.exceptions.ValidationException;
 
+@Component
 public class ValidationServiceImpl implements ValidationService {
 
     int[][] serviceCodeValues = new int[][]{

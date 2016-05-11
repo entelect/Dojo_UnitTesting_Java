@@ -1,22 +1,22 @@
 package za.co.entelect.dojo.services;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 import za.co.entelect.dojo.Card;
 
+@Component
 public class CardServiceImpl implements CardService {
 
     private double BANK_CHARGE = 2D;
 
+    @Autowired
     private ValidationService validationService;
 
+    @Autowired
     private PinService pinService;
 
+    @Autowired
     private AccountService accountService;
-
-    public CardServiceImpl() {
-        validationService = new ValidationServiceImpl();
-        pinService = new PinServiceImpl();
-        accountService = new AccountServiceImpl();
-    }
 
     @Override
     public void withdrawMoney(Card aCard, double transactionAmount) {

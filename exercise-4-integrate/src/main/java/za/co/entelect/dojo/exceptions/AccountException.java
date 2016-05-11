@@ -9,4 +9,8 @@ public class AccountException extends RuntimeException {
         super();
         responseEnum = aResponseEnum;
     }
+
+    public ResponseEnum getResponseEnum() {
+        return responseEnum;
+    }
 }
