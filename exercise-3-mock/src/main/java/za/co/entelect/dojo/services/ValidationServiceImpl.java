@@ -1,6 +1,6 @@
 package za.co.entelect.dojo.services;
 
-import za.co.entelect.dojo.enums.ResponseEnum;
+import za.co.entelect.dojo.ex3.enums.ResponseEnum;
 import za.co.entelect.dojo.exceptions.ValidationException;
 
 public class ValidationServiceImpl implements ValidationService {
@@ -40,18 +40,18 @@ public class ValidationServiceImpl implements ValidationService {
      */
     @Override
     public void validateTrackData(String trackData) {
-        if (trackData.length() != 24) {
+        if (trackData.length() != 23) {
             throw new ValidationException(ResponseEnum.TRACK2_INVALID_LENGTH);
         }
-        String cardNumber = trackData.substring(1,17);
+        String cardNumber = trackData.substring(0,16);
         if (!isValidCardNumber(cardNumber)) {
             throw new ValidationException(ResponseEnum.INVALID_CARD);
         }
-        String expDate = trackData.substring(18,22);
+        String expDate = trackData.substring(16,20);
         if (!validateExpiryDate(expDate)) {
             throw new ValidationException(ResponseEnum.INVALID_EXP_DATE);
         }
-        String serviceCode = trackData.substring(22,25);
+        String serviceCode = trackData.substring(20,23);
         if (!isValidServiceCode(serviceCode)) {
             throw new ValidationException(ResponseEnum.INVALID_SERVICE_CODE);
         }

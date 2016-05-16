@@ -1,6 +1,6 @@
 package za.co.entelect.dojo.services;
 
-import za.co.entelect.dojo.enums.ResponseEnum;
+import za.co.entelect.dojo.ex3.enums.ResponseEnum;
 import za.co.entelect.dojo.exceptions.ValidationException;
 
 public class PinServiceImpl implements PinService {

@@ -11,7 +11,7 @@ public class Card {
 
     public Card(String aTrack2, String aPinBlock, double aAvailableBalance) {
         track2 = aTrack2;
-        cardNumber = aTrack2.substring(1,17);
+        cardNumber = aTrack2.substring(0,16);
         pinBlock = aPinBlock;
         availableBalance = aAvailableBalance;
     }

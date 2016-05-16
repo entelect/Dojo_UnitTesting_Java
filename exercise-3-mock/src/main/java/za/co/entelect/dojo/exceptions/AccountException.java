@@ -1,6 +1,6 @@
 package za.co.entelect.dojo.exceptions;
 
-import za.co.entelect.dojo.enums.ResponseEnum;
+import za.co.entelect.dojo.ex3.enums.ResponseEnum;
 
 public class AccountException extends RuntimeException {
     ResponseEnum responseEnum;
