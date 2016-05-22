@@ -4,6 +4,7 @@ package za.co.entelect.dojo;
  * Our domain object
  */
 public class Card {
+
     private String track2;
     private String cardNumber;
     private String pinBlock;

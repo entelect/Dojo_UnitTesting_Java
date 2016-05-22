@@ -2,8 +2,8 @@ package za.co.entelect.dojo.services;
 
 public interface CardValidation {
 
-    public boolean isValidCardNumber(String ccNumber);
+    boolean isValidCardNumber(String ccNumber);
 
-    public void validateTrackData(String trackData);
+    void validateTrackData(String trackData);
 
 }

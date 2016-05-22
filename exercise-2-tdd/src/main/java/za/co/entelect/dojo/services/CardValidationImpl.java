@@ -2,6 +2,12 @@ package za.co.entelect.dojo.services;
 
 public class CardValidationImpl implements CardValidation {
 
+    private static final int MONTH_BEGIN_INDEX = 2;
+    private static final int MONTH_END_INDEX = 4;
+    private static final int JAN = 1;
+    private static final int DEC = 12;
+    private static final int SERVICE_CODE_LENGTH = 3;
+
     int[][] serviceCodeValues = new int[][]{
             {1,2,5,6,7,9},
             {0,2,4},
@@ -45,17 +51,18 @@ public class CardValidationImpl implements CardValidation {
             return false;
         }
 
-        int mm = Integer.parseInt(expDate.substring(2,4));
-        return !(mm < 1 || mm > 12);
+        int month = Integer.parseInt(expDate.substring(MONTH_BEGIN_INDEX, MONTH_END_INDEX));
+
+        return !(month < JAN || month > DEC);
     }
 
     private boolean isValidServiceCode(String serviceCode) {
 
-        if (serviceCode.length() != 3) {
+        if (serviceCode.length() != SERVICE_CODE_LENGTH) {
             return false;
         }
 
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < SERVICE_CODE_LENGTH; i++) {
             int n = Integer.parseInt(serviceCode.substring(i,i+1));
             int[] validValues = serviceCodeValues[i];
             boolean needle = false;

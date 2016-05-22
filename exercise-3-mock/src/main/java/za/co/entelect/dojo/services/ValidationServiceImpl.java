@@ -5,6 +5,14 @@ import za.co.entelect.dojo.exceptions.ValidationException;
 
 public class ValidationServiceImpl implements ValidationService {
 
+    private static final int JAN = 1;
+    private static final int DEC = 12;
+    private static final int SERVICE_CODE_LENGTH = 3;
+    private static final int CARD_NUMBER_BEGIN_INDEX = 0;
+    private static final int CARD_NUMBER_END_INDEX = 16;
+    private static final int EXPIRY_DATE_END_INDEX = 20;
+    private static final int SERVICE_CODE_END_INDEX = 23;
+
     int[][] serviceCodeValues = new int[][]{
             {1,2,5,6,7,9},
             {0,2,4},
@@ -43,15 +51,15 @@ public class ValidationServiceImpl implements ValidationService {
         if (trackData.length() != 23) {
             throw new ValidationException(ResponseEnum.TRACK2_INVALID_LENGTH);
         }
-        String cardNumber = trackData.substring(0,16);
+        String cardNumber = trackData.substring(CARD_NUMBER_BEGIN_INDEX, CARD_NUMBER_END_INDEX);
         if (!isValidCardNumber(cardNumber)) {
             throw new ValidationException(ResponseEnum.INVALID_CARD);
         }
-        String expDate = trackData.substring(16,20);
+        String expDate = trackData.substring(CARD_NUMBER_END_INDEX, EXPIRY_DATE_END_INDEX);
         if (!validateExpiryDate(expDate)) {
             throw new ValidationException(ResponseEnum.INVALID_EXP_DATE);
         }
-        String serviceCode = trackData.substring(20,23);
+        String serviceCode = trackData.substring(EXPIRY_DATE_END_INDEX, SERVICE_CODE_END_INDEX);
         if (!isValidServiceCode(serviceCode)) {
             throw new ValidationException(ResponseEnum.INVALID_SERVICE_CODE);
         }
@@ -63,16 +71,16 @@ public class ValidationServiceImpl implements ValidationService {
         }
 
         int mm = Integer.parseInt(expDate.substring(2,4));
-        return !(mm < 1 || mm > 12);
+        return !(mm < JAN || mm > DEC);
     }
 
     private boolean isValidServiceCode(String serviceCode) {
 
-        if (serviceCode.length() != 3) {
+        if (serviceCode.length() != SERVICE_CODE_LENGTH) {
             return false;
         }
 
-        for(int i = 0; i < 3; i++) {
+        for(int i = 0; i < SERVICE_CODE_LENGTH; i++) {
             int n = Integer.parseInt(serviceCode.substring(i,i+1));
             int[] validValues = serviceCodeValues[i];
             boolean needle = false;

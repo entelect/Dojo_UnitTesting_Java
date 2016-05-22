@@ -7,10 +7,7 @@ import org.junit.runner.RunWith;
 import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
-import org.mockito.Mockito;
-import org.mockito.invocation.InvocationOnMock;
 import org.mockito.runners.MockitoJUnitRunner;
-import org.mockito.stubbing.Answer;
 import za.co.entelect.dojo.Card;
 import za.co.entelect.dojo.enums.ResponseEnum;
 import za.co.entelect.dojo.exceptions.AccountException;
@@ -19,11 +16,7 @@ import za.co.entelect.dojo.exceptions.ValidationException;
 import static org.mockito.Matchers.any;
 import static org.mockito.Matchers.anyDouble;
 import static org.mockito.Matchers.anyString;
-import static org.mockito.Mockito.doNothing;
-import static org.mockito.Mockito.doThrow;
-import static org.mockito.Mockito.reset;
-import static org.mockito.Mockito.verify;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @RunWith(MockitoJUnitRunner.class)
 public class CardServiceImplTest {
@@ -49,7 +42,7 @@ public class CardServiceImplTest {
     public void testHappyCase() {
         doNothing().when(validationService).validateTrackData(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
-        doNothing().when(accountService).withdrawMoney(any(Card.class), any(double.class), any(double.class));
+        doNothing().when(accountService).withdrawMoney(any(Card.class), anyDouble(), anyDouble());
         cardService.withdrawMoney(getCard(true,1d), 2d);
     }
 
@@ -57,7 +50,7 @@ public class CardServiceImplTest {
     public void testInsufficientFunds() {
         doNothing().when(validationService).validateTrackData(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
-        doThrow(new AccountException(ResponseEnum.INSUFFICIENT_FUNDS)).when(accountService).withdrawMoney(any(Card.class), any(double.class), any(double.class));
+        doThrow(new AccountException(ResponseEnum.INSUFFICIENT_FUNDS)).when(accountService).withdrawMoney(any(Card.class), anyDouble(), anyDouble());
         try {
             cardService.withdrawMoney(getCard(true,1d), 2d);
         } catch (AccountException e) {

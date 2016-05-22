@@ -6,7 +6,6 @@ public class AccountException extends RuntimeException {
     ResponseEnum responseEnum;
 
     public AccountException(ResponseEnum aResponseEnum) {
-        super();
         responseEnum = aResponseEnum;
     }
 
