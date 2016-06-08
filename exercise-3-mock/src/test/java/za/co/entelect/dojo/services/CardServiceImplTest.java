@@ -12,7 +12,7 @@ public class CardServiceImplTest {
 
     //add mocks here
 
-    //add service to be mocked here
+    //inject the mocks here
 
 
     @Before
@@ -21,7 +21,7 @@ public class CardServiceImplTest {
     }
 
     @Test
-    public void testHappyCase() {
+    public void testWithdrawMoneySuccess() {
         // void methods in services to do NOTHING
     }
 

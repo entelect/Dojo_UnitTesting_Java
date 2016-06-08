@@ -40,9 +40,9 @@ public class CardServiceImplTest {
 
     @Test
     public void testHappyCase() {
-        doNothing().when(validationService).validateTrackData(anyString());
+        /*doNothing().when(validationService).validateTrackData(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
-        doNothing().when(accountService).withdrawMoney(any(Card.class), anyDouble(), anyDouble());
+        doNothing().when(accountService).withdrawMoney(any(Card.class), anyDouble(), anyDouble());*/
         cardService.withdrawMoney(getCard(true,1d), 2d);
     }
 

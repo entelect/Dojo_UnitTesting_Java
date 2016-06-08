@@ -1,12 +1,18 @@
 In order of appearance:
 - Track 2 data must be of certain length
-    - use TRACK2_INVALID_LENGTH
+    - throw TRACK2_INVALID_LENGTH
 - Card number, 16 digits; must be valid
     - Use the provided card number checker
-    - use INVALID_CARD
+    - throw INVALID_CARD
 - Expiration date of card in format YYMM
     - Use the provided expiry date checker
-    - use INVALID_EXP_DATE
+    - throw INVALID_EXP_DATE
 - Service code of 3 digits where each digit is according to accepted valid values
     - Use the provided service-code checker
+    - throw INVALID_SERVICE_CODE
 
+Valid Track2: 49299004814036421603101
+InValid Track2: 4929900481403642160310155
+InValid Card Track2: 49299002814036421603101
+InValid Exp Date Track2: 49299004814036421699101
+InValid Service Code Track2: 49299004814036421603850
