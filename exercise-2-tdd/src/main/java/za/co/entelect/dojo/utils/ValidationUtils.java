@@ -1,21 +1,17 @@
-package za.co.entelect.dojo.services;
+package za.co.entelect.dojo.utils;
 
-public class CardValidationImpl implements CardValidation {
+public class ValidationUtils {
 
-    private static final int MONTH_BEGIN_INDEX = 2;
-    private static final int MONTH_END_INDEX = 4;
-    private static final int JAN = 1;
-    private static final int DEC = 12;
     private static final int SERVICE_CODE_LENGTH = 3;
 
-    int[][] serviceCodeValues = new int[][]{
+    static int[][] serviceCodeValues = new int[][]{
             {1,2,5,6,7,9},
             {0,2,4},
             {0,1,2,3,4,5,6,7}
     };
 
-    @Override
-    public boolean isValidCardNumber(String ccNumber) {
+
+    public static boolean isValidCardNumber(String ccNumber) {
         int sum = 0;
         boolean alternate = false;
 
@@ -37,25 +33,7 @@ public class CardValidationImpl implements CardValidation {
         return (sum % 10 == 0);
     }
 
-    /**
-     * @param trackData - The in-theory un-altered track2 data as read from the card
-     */
-    @Override
-    public void validateTrackData(String trackData) {
-        //@todo Implement this method according to the spec found in Track2Data_Spec
-    }
-
-    private boolean validateExpiryDate(String expDate) {
-        if (expDate.length() != 4) {
-            return false;
-        }
-
-        int month = Integer.parseInt(expDate.substring(MONTH_BEGIN_INDEX, MONTH_END_INDEX));
-
-        return !(month < JAN || month > DEC);
-    }
-
-    private boolean isValidServiceCode(String serviceCode) {
+    public boolean isValidServiceCode(String serviceCode) {
 
         if (serviceCode.length() != SERVICE_CODE_LENGTH) {
             return false;
