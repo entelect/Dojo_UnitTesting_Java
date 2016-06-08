@@ -38,12 +38,11 @@ public class CardValidationImpl implements CardValidation {
     }
 
     /**
-     * @todo Implement this method according to the spec found in Track2Data_Spec
      * @param trackData - The in-theory un-altered track2 data as read from the card
      */
     @Override
     public void validateTrackData(String trackData) {
-        //do nothing because everything is cool
+        //@todo Implement this method according to the spec found in Track2Data_Spec
     }
 
     private boolean validateExpiryDate(String expDate) {
