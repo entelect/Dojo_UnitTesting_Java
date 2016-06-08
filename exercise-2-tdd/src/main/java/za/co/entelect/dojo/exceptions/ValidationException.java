@@ -5,9 +5,13 @@ import za.co.entelect.dojo.enums.ResponseEnum;
 
 public class ValidationException extends RuntimeException {
 
-    private ResponseEnum responseEnum;
+    private final ResponseEnum responseEnum;
 
     public ValidationException(ResponseEnum aResponseEnum) {
         responseEnum = aResponseEnum;
+    }
+
+    public ResponseEnum getResponseEnum() {
+        return responseEnum;
     }
 }

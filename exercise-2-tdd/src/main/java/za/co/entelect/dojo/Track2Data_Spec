@@ -7,13 +7,12 @@ Use test driven development to create a Track 2 number validation service:
     - Once all tests are green you know you are done.
 
 In order of appearance:
-- Track 2 data must be of certain length
+- Track 2 data must be of certain length : 23 characters
     - throw ValidationException(ResponseEnum.TRACK2_INVALID_LENGTH)
 - Card number, 16 digits; must be valid
     - Use the provided card number checker
     - throw ValidationException(INVALID_CARD)
 - Expiration date of card in format YYMM
-    - Use the provided expiry date checker
     - throw ValidationException(INVALID_EXP_DATE)
 - Service code of 3 digits where each digit is according to accepted valid values
     - Use the provided service-code checker

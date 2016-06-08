@@ -1,8 +1,12 @@
 package za.co.entelect.dojo.utils;
 
+import org.apache.commons.lang3.StringUtils;
+
 public class ValidationUtils {
 
     private static final int SERVICE_CODE_LENGTH = 3;
+    public static final int DEC = 12;
+    public static final int JAN = 1;
 
     static int[][] serviceCodeValues = new int[][]{
             {1,2,5,6,7,9},
@@ -33,7 +37,7 @@ public class ValidationUtils {
         return (sum % 10 == 0);
     }
 
-    public boolean isValidServiceCode(String serviceCode) {
+    public static boolean isValidServiceCode(String serviceCode) {
 
         if (serviceCode.length() != SERVICE_CODE_LENGTH) {
             return false;
@@ -53,5 +57,20 @@ public class ValidationUtils {
             }
         }
         return true;
+    }
+
+    public static boolean isValidDate(String dateString) {
+        if(StringUtils.length(dateString) != 4){
+            return false;
+        }
+
+        for (char aChar : dateString.toCharArray()) {
+            if(!Character.isDigit(aChar)){
+                return false;
+            }
+        }
+        Integer month = Integer.valueOf(dateString.substring(2, 4));
+
+        return month >= JAN && month <= DEC;
     }
 }
