@@ -1,0 +1,21 @@
+Exercise 1:
+
+Create units test to verify the CardApplicationService fully complies to all the requirements (spoiler alert: there is a bug)
+
+The CardApplication determines if a client can be approved for a new credit card, it produces a result in the form of CardApplicationResult
+which provides the output of the clients card application.
+
+There are two main types of clients, employed and and the riskier/lazier unemployed.
+
+If no bank accounts are supplied the service will respond with: CardApplicationResult.NO_BANK_ACCOUNT_DECLINED
+
+Employed :
+    A employed client is allowed no more than 1 account with a negative balance otherwise the service will respond with : CardApplicationResult.EMPLOYED_OVERDRAFT_DECLINED
+    A employed client must have a total balance of 5000 or more otherwise the service will respond with : CardApplicationResult.MIN_BALANCE_DECLINED
+Unemployed
+    A unemployed client is not allowed to have any accounts with a negative balance otherwise the service will respond with : CardApplicationResult.UNEMPLOYED_OVERDRAFT_DECLINED
+    A unemployed client must have a total balance of 10000 or more otherwise the service will respond with : CardApplicationResult.MIN_BALANCE_DECLINED
+
+If all conditions are met the service will respond with CardApplicationResult.APPROVED
+
+After all test have been created you can verify code coverage by running the following: mvn cobertura:cobertura

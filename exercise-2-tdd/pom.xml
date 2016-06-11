@@ -72,7 +72,7 @@
                         -->
                         <regexes>
                             <regex>
-                                <pattern>za.co.entelect.dojo.services.*</pattern>
+                                <pattern>za.co.entelect.dojo.service.*</pattern>
                                 <branchRate>80</branchRate>
                                 <lineRate>80</lineRate>
                             </regex>
