@@ -8,7 +8,7 @@
         <version>MOO-SNAPSHOT</version>
     </parent>
 
-    <artifactId>exercise-1-fix</artifactId>
+    <artifactId>exercise-1-verify</artifactId>
     <version>MOO-SNAPSHOT</version>
     <packaging>jar</packaging>
 
