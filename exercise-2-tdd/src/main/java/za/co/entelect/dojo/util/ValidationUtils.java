@@ -1,4 +1,4 @@
-package za.co.entelect.dojo.utils;
+package za.co.entelect.dojo.util;
 
 import org.apache.commons.lang3.StringUtils;
 
@@ -16,6 +16,10 @@ public class ValidationUtils {
 
 
     public static boolean isValidCardNumber(String ccNumber) {
+        if(!isNumeric(ccNumber)){
+            return false;
+        }
+
         int sum = 0;
         boolean alternate = false;
 
@@ -38,8 +42,11 @@ public class ValidationUtils {
     }
 
     public static boolean isValidServiceCode(String serviceCode) {
-
         if (serviceCode.length() != SERVICE_CODE_LENGTH) {
+            return false;
+        }
+
+        if(!isNumeric(serviceCode)){
             return false;
         }
 
@@ -59,18 +66,26 @@ public class ValidationUtils {
         return true;
     }
 
-    public static boolean isValidDate(String dateString) {
+    public static boolean isValidExpirationDate(String dateString) {
         if(StringUtils.length(dateString) != 4){
             return false;
         }
 
+        if (!isNumeric(dateString)) {
+            return false;
+        }
+
+        Integer month = Integer.valueOf(dateString.substring(0, 2));
+
+        return month >= JAN && month <= DEC;
+    }
+
+    private static boolean isNumeric(String dateString) {
         for (char aChar : dateString.toCharArray()) {
             if(!Character.isDigit(aChar)){
                 return false;
             }
         }
-        Integer month = Integer.valueOf(dateString.substring(2, 4));
-
-        return month >= JAN && month <= DEC;
+        return true;
     }
 }

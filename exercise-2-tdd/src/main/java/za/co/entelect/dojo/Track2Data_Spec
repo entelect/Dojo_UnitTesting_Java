@@ -12,14 +12,30 @@ In order of appearance:
 - Card number, 16 digits; must be valid
     - Use the provided card number checker
     - throw ValidationException(INVALID_CARD)
+    invalid card numbers:
+                5454
+                7987954151321654654844984984
+                NOT_A_NUMBER__:<
+                4498484616416544
+    valid card numbers :
+                4388576019611022
+                4388576019611030
+                5388576018900076
+                5388576018900084
 - Expiration date of card in format YYMM
     - throw ValidationException(INVALID_EXP_DATE)
 - Service code of 3 digits where each digit is according to accepted valid values
     - Use the provided service-code checker
     - throw ValidationException(INVALID_SERVICE_CODE)
+    invalid service codes
+        1
+        1234
+        AAA
+        589
+        228
+    valid service codes
+        947
+        542
+        100
 
 Valid Track2: 49299004814036421603101
-InValid Track2: 4929900481403642160310155
-InValid Card Track2: 49299002814036421603101
-InValid Exp Date Track2: 49299004814036421699101
-InValid Service Code Track2: 49299004814036421603850
