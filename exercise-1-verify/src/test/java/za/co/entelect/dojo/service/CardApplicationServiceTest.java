@@ -21,12 +21,10 @@ public class CardApplicationServiceTest {
 
     @Test
     public void testNoBankAccountDeclined(){
-        assertEquals("Expected NO_BANK_ACCOUNT_DECLINED",
-                CardApplicationResult.NO_BANK_ACCOUNT_DECLINED,
+        assertEquals( CardApplicationResult.NO_BANK_ACCOUNT_DECLINED,
                 cardApplicationService.applyForCreditCard(EMPLOYED, null));
 
-        assertEquals("Expected NO_BANK_ACCOUNT_DECLINED",
-                CardApplicationResult.NO_BANK_ACCOUNT_DECLINED,
+        assertEquals(CardApplicationResult.NO_BANK_ACCOUNT_DECLINED,
                 cardApplicationService.applyForCreditCard(EMPLOYED));
     }
 
