@@ -31,7 +31,7 @@ public class CardServiceImplTest {
     private AccountService accountService;
 
     @InjectMocks
-    private CardServiceImpl cardService;
+    private CardService cardService = new CardServiceImpl();
 
     @Before
     public void setUp() {
@@ -43,18 +43,18 @@ public class CardServiceImplTest {
         /*doNothing().when(validationService).validateTrackData(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
         doNothing().when(accountService).withdrawMoney(any(Card.class), anyDouble(), anyDouble());*/
-        cardService.withdrawMoney(getCard(true,1d), 2d);
+        cardService.withdrawMoney(getCard(true,100L), 2d);
     }
 
     @Test
     public void testInsufficientFunds() {
         doNothing().when(validationService).validateTrackData(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
-        doThrow(new AccountException(CardValidationErrorType.INSUFFICIENT_FUNDS)).when(accountService).withdrawMoney(any(Card.class), anyDouble(), anyDouble());
+        doThrow(new AccountException(CardValidationErrorType.INSUFFICIENT_FUNDS)).when(accountService).withdrawMoney(any(Card.class), anyLong(), anyLong());
         try {
-            cardService.withdrawMoney(getCard(true,1d), 2d);
+            cardService.withdrawMoney(getCard(true,100L), 2d);
         } catch (AccountException e) {
-            Assert.assertEquals(e.getCardValidationErrorType(), CardValidationErrorType.INSUFFICIENT_FUNDS);
+            Assert.assertEquals(CardValidationErrorType.INSUFFICIENT_FUNDS, e.getCardValidationErrorType());
         }
     }
 
@@ -63,7 +63,7 @@ public class CardServiceImplTest {
         doNothing().when(validationService).validateTrackData(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
         doThrow(new ValidationException(CardValidationErrorType.INVALID_PIN)).when(pinService).validatePin(anyString(),anyString());
-        cardService.withdrawMoney(getCard(true,1d), 2d);
+        cardService.withdrawMoney(getCard(true,100L), 2d);
     }
 
     @Test
@@ -71,9 +71,9 @@ public class CardServiceImplTest {
         doNothing().when(validationService).validateTrackData(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
         ArgumentCaptor<Card> argument = ArgumentCaptor.forClass(Card.class);
-        Card card = getCard(true,1d);
+        Card card = getCard(true,100L);
         cardService.withdrawMoney(card, 2d);
-        verify(accountService).withdrawMoney(argument.capture(), anyDouble(), anyDouble());
+        verify(accountService).withdrawMoney(argument.capture(), anyLong(), anyLong());
         Assert.assertEquals(argument.getValue().getTrack2(), card.getTrack2());
     }
 
@@ -83,7 +83,7 @@ public class CardServiceImplTest {
         reset(accountService);
     }
 
-    private Card getCard(boolean validCardNumber, double balanceAvailable) {
+    private Card getCard(boolean validCardNumber, long balanceAvailable) {
         String cardNumber = "4929900481403641";
         if (!validCardNumber) {
             cardNumber = "4929900481403642";

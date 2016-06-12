@@ -32,7 +32,7 @@ public class Track2DataValidationServiceTest {
 
     @Test
     public void testInvalidCardNumber(){
-        checkForException(INVALID_CARD_NUMBER + VALID_EXP_DATE + VALID_SERVICE_CODE, "Expected a invalid card number", CardValidationErrorType.INVALID_CARD);
+        checkForException(INVALID_CARD_NUMBER + VALID_EXP_DATE + VALID_SERVICE_CODE, "Expected invalid card number", CardValidationErrorType.INVALID_CARD);
     }
 
     @Test
