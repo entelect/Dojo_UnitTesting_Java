@@ -55,13 +55,13 @@ public class CardServiceImplTest {
         //call reset for all mocks
     }
 
-    private Card getCard(boolean validCardNumber, double balanceAvailable) {
+    private Card getCard(boolean validCardNumber, long balanceAvailableInCents) {
         String cardNumber = "4929900481403641";
         if (!validCardNumber) {
             cardNumber = "4929900481403642";
         }
         String track2 = cardNumber + "1703101";
         String pinBlock = "FF" + cardNumber;
-        return new Card(track2,pinBlock, balanceAvailable);
+        return new Card(track2,pinBlock, balanceAvailableInCents);
     }
 }

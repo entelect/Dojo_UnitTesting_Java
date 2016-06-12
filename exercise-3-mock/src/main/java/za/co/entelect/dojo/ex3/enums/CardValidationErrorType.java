@@ -1,6 +1,7 @@
 package za.co.entelect.dojo.ex3.enums;
 
-public enum ResponseEnum {
+public enum CardValidationErrorType {
+
     TRACK2_INVALID_LENGTH("01", "Track 2 data is too short or too long"),
     INVALID_CARD("02", "You do not exist. Go away."),
     INVALID_EXP_DATE("03", "Retirement pending"),
@@ -11,7 +12,7 @@ public enum ResponseEnum {
     private String code;
     private String message;
 
-    private ResponseEnum(String aCode, String aMessage) {
+    private CardValidationErrorType(String aCode, String aMessage) {
         code = aCode;
         message = aMessage;
     }

@@ -1,7 +1,7 @@
 package za.co.entelect.dojo.service;
 
 import org.springframework.stereotype.Component;
-import za.co.entelect.dojo.enums.ResponseEnum;
+import za.co.entelect.dojo.enums.CardValidationErrorType;
 import za.co.entelect.dojo.exceptions.ValidationException;
 
 @Component
@@ -51,19 +51,19 @@ public class ValidationServiceImpl implements ValidationService {
     @Override
     public void validateTrackData(String trackData) {
         if (trackData.length() != 23) {
-            throw new ValidationException(ResponseEnum.TRACK2_INVALID_LENGTH);
+            throw new ValidationException(CardValidationErrorType.TRACK2_INVALID_LENGTH);
         }
         String cardNumber = trackData.substring(CARD_NUMBER_BEGIN_INDEX,CARD_NUMBER_END_INDEX);
         if (!isValidCardNumber(cardNumber)) {
-            throw new ValidationException(ResponseEnum.INVALID_CARD);
+            throw new ValidationException(CardValidationErrorType.INVALID_CARD);
         }
         String expDate = trackData.substring(CARD_NUMBER_END_INDEX,EXPIRY_DATE_END_INDEX);
         if (!validateExpiryDate(expDate)) {
-            throw new ValidationException(ResponseEnum.INVALID_EXP_DATE);
+            throw new ValidationException(CardValidationErrorType.INVALID_EXP_DATE);
         }
         String serviceCode = trackData.substring(EXPIRY_DATE_END_INDEX,SERVICE_CODE_END_INDEX);
         if (!isValidServiceCode(serviceCode)) {
-            throw new ValidationException(ResponseEnum.INVALID_SERVICE_CODE);
+            throw new ValidationException(CardValidationErrorType.INVALID_SERVICE_CODE);
         }
     }
 

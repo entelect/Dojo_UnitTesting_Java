@@ -9,7 +9,7 @@ import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import za.co.entelect.dojo.Card;
-import za.co.entelect.dojo.enums.ResponseEnum;
+import za.co.entelect.dojo.enums.CardValidationErrorType;
 import za.co.entelect.dojo.exceptions.AccountException;
 import za.co.entelect.dojo.exceptions.ValidationException;
 
@@ -50,11 +50,11 @@ public class CardServiceImplTest {
     public void testInsufficientFunds() {
         doNothing().when(validationService).validateTrackData(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
-        doThrow(new AccountException(ResponseEnum.INSUFFICIENT_FUNDS)).when(accountService).withdrawMoney(any(Card.class), anyDouble(), anyDouble());
+        doThrow(new AccountException(CardValidationErrorType.INSUFFICIENT_FUNDS)).when(accountService).withdrawMoney(any(Card.class), anyDouble(), anyDouble());
         try {
             cardService.withdrawMoney(getCard(true,1d), 2d);
         } catch (AccountException e) {
-            Assert.assertEquals(e.getResponseEnum(), ResponseEnum.INSUFFICIENT_FUNDS);
+            Assert.assertEquals(e.getCardValidationErrorType(), CardValidationErrorType.INSUFFICIENT_FUNDS);
         }
     }
 
@@ -62,7 +62,7 @@ public class CardServiceImplTest {
     public void testInvalidPin() {
         doNothing().when(validationService).validateTrackData(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
-        doThrow(new ValidationException(ResponseEnum.INVALID_PIN)).when(pinService).validatePin(anyString(),anyString());
+        doThrow(new ValidationException(CardValidationErrorType.INVALID_PIN)).when(pinService).validatePin(anyString(),anyString());
         cardService.withdrawMoney(getCard(true,1d), 2d);
     }
 

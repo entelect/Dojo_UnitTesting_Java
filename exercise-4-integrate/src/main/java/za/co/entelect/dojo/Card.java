@@ -5,16 +5,17 @@ package za.co.entelect.dojo;
  */
 public class Card {
 
-    private String track2;
-    private String cardNumber;
-    private String pinBlock;
-    private double availableBalance;
+    private final String cardNumber;
+    private final String pinBlock;
 
-    public Card(String aTrack2, String aPinBlock, double aAvailableBalance) {
+    private String track2;
+    private long availableBalanceInCents;
+
+    public Card(String aTrack2, String aPinBlock, long aAvailableBalanceInCents) {
         track2 = aTrack2;
-        cardNumber = aTrack2.substring(0,16);
+        cardNumber = aTrack2.substring(1,17);
         pinBlock = aPinBlock;
-        availableBalance = aAvailableBalance;
+        availableBalanceInCents = aAvailableBalanceInCents;
     }
 
     public String getTrack2() {
@@ -33,11 +34,11 @@ public class Card {
         return pinBlock;
     }
 
-    public double getAvailableBalance() {
-        return availableBalance;
+    public long getAvailableBalanceInCents() {
+        return availableBalanceInCents;
     }
 
-    public void setAvailableBalance(double aAvailableBalance) {
-        availableBalance = aAvailableBalance;
+    public void setAvailableBalanceInCents(long aAvailableBalanceInCents) {
+        availableBalanceInCents = aAvailableBalanceInCents;
     }
 }

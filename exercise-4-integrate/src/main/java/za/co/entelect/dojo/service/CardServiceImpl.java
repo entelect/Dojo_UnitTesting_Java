@@ -19,7 +19,7 @@ public class CardServiceImpl implements CardService {
     private AccountService accountService;
 
     @Override
-    public void withdrawMoney(Card aCard, double transactionAmount) {
+    public void withdrawMoney(Card aCard, long transactionAmountInCents) {
         validationService.validateTrackData(aCard.getTrack2());
         pinService.validatePin(aCard.getPinBlock(), aCard.getCardNumber());
         accountService.withdrawMoney(aCard, transactionAmount, BANK_CHARGE);

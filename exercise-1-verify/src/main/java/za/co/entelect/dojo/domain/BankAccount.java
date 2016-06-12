@@ -2,6 +2,9 @@ package za.co.entelect.dojo.domain;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
+/**
+ * Models the clients bank account, to apply for a card
+ */
 public class BankAccount {
 
     private long balanceInCents;

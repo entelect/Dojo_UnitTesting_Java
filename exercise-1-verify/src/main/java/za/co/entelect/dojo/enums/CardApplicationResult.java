@@ -1,5 +1,8 @@
 package za.co.entelect.dojo.enums;
 
+/**
+ * Defined all the possible outcomes of a card application
+ */
 public enum CardApplicationResult {
 
     APPROVED(true),
