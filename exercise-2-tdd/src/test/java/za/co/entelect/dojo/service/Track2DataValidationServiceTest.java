@@ -18,7 +18,7 @@ public class Track2DataValidationServiceTest {
     private static final String INVALID_SERVICE_CODE = "589";
     private static final String VALID_SERVICE_CODE = "542";
 
-    private Track2DataValidationService service = new Track2DataValidationService();
+    private Track2DataValidationService service = new Track2DataValidationServiceImpl();
 
     @Test
     public void testNumberTooShort(){
