@@ -4,7 +4,7 @@ Use test driven development to create a Track 2 number validation service:
     - Create a set of a unit tests to check both the positive and negative case of each item in the spec.
     - Once a set of failing tests has been created, the logic for the validator can implemented.
     - Try to use your IDEs refactoring tools to generate the methods and classes for you.
-    - Once all tests are green build to the project to ensure you have reached 80% line and branch coverage.
+    - Once all tests are green build to the project to ensure you have reached 80% line and branch coverage, or the build will fail.
 
 In order of appearance:
 - Track 2 data must be of certain length : 23 characters

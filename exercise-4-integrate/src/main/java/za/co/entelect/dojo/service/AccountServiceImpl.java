@@ -1,7 +1,7 @@
 package za.co.entelect.dojo.service;
 
 import org.springframework.stereotype.Component;
-import za.co.entelect.dojo.Card;
+import za.co.entelect.dojo.domain.Card;
 import za.co.entelect.dojo.enums.CardValidationErrorType;
 import za.co.entelect.dojo.exceptions.AccountException;
 

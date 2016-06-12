@@ -4,9 +4,13 @@ import za.co.entelect.dojo.enums.CardValidationErrorType;
 
 public class ValidationException extends RuntimeException {
 
-    private CardValidationErrorType cardValidationErrorType;
+    private final CardValidationErrorType cardValidationErrorType;
 
     public ValidationException(CardValidationErrorType aCardValidationErrorType) {
         cardValidationErrorType = aCardValidationErrorType;
+    }
+
+    public CardValidationErrorType getCardValidationErrorType() {
+        return cardValidationErrorType;
     }
 }

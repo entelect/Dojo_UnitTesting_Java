@@ -1,6 +1,6 @@
 package za.co.entelect.dojo.exceptions;
 
-import za.co.entelect.dojo.ex3.enums.CardValidationErrorType;
+import za.co.entelect.dojo.enums.CardValidationErrorType;
 
 public class AccountException extends RuntimeException {
 

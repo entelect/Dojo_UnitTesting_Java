@@ -1,6 +1,10 @@
 package za.co.entelect.dojo.enums;
 
+/**
+ *
+ */
 public enum CardValidationErrorType {
+
     TRACK2_INVALID_LENGTH("01", "Track 2 data is too short or too long"),
     INVALID_CARD("02", "You do not exist. Go away."),
     INVALID_EXP_DATE("03", "Retirement pending"),

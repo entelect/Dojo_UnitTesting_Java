@@ -1,6 +1,6 @@
 package za.co.entelect.dojo.exceptions;
 
-import za.co.entelect.dojo.ex3.enums.CardValidationErrorType;
+import za.co.entelect.dojo.enums.CardValidationErrorType;
 
 public class ValidationException extends RuntimeException {
 
@@ -8,5 +8,9 @@ public class ValidationException extends RuntimeException {
 
     public ValidationException(CardValidationErrorType aCardValidationErrorType) {
         cardValidationErrorType = aCardValidationErrorType;
+    }
+
+    public CardValidationErrorType getCardValidationErrorType() {
+        return cardValidationErrorType;
     }
 }

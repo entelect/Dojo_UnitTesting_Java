@@ -8,13 +8,12 @@ import org.mockito.ArgumentCaptor;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
-import za.co.entelect.dojo.Card;
+import za.co.entelect.dojo.domain.Card;
 import za.co.entelect.dojo.enums.CardValidationErrorType;
 import za.co.entelect.dojo.exceptions.AccountException;
 import za.co.entelect.dojo.exceptions.ValidationException;
 
 import static org.mockito.Matchers.any;
-import static org.mockito.Matchers.anyDouble;
 import static org.mockito.Matchers.anyString;
 import static org.mockito.Mockito.*;
 
@@ -22,7 +21,7 @@ import static org.mockito.Mockito.*;
 public class CardServiceImplTest {
 
     @Mock
-    private ValidationService validationService;
+    private Track2DataValidationService track2DataValidationService;
 
     @Mock
     private PinService pinService;
@@ -48,7 +47,7 @@ public class CardServiceImplTest {
 
     @Test
     public void testInsufficientFunds() {
-        doNothing().when(validationService).validateTrackData(anyString());
+        doNothing().when(track2DataValidationService).isValid(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
         doThrow(new AccountException(CardValidationErrorType.INSUFFICIENT_FUNDS)).when(accountService).withdrawMoney(any(Card.class), anyLong(), anyLong());
         try {
@@ -60,7 +59,7 @@ public class CardServiceImplTest {
 
     @Test(expected = ValidationException.class)
     public void testInvalidPin() {
-        doNothing().when(validationService).validateTrackData(anyString());
+        doNothing().when(track2DataValidationService).isValid(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
         doThrow(new ValidationException(CardValidationErrorType.INVALID_PIN)).when(pinService).validatePin(anyString(),anyString());
         cardService.withdrawMoney(getCard(true,100L), 200L);
@@ -68,7 +67,7 @@ public class CardServiceImplTest {
 
     @Test
     public void testBankCharge() {
-        doNothing().when(validationService).validateTrackData(anyString());
+        doNothing().when(track2DataValidationService).isValid(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
         ArgumentCaptor<Card> argument = ArgumentCaptor.forClass(Card.class);
         Card card = getCard(true,100L);
@@ -78,7 +77,7 @@ public class CardServiceImplTest {
     }
 
     private void resetAll() {
-        reset(validationService);
+        reset(track2DataValidationService);
         reset(pinService);
         reset(accountService);
     }

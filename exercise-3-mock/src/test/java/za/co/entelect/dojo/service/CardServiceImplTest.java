@@ -4,7 +4,7 @@ import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
-import za.co.entelect.dojo.Card;
+import za.co.entelect.dojo.domain.Card;
 import za.co.entelect.dojo.exceptions.AccountException;
 
 @RunWith(MockitoJUnitRunner.class)

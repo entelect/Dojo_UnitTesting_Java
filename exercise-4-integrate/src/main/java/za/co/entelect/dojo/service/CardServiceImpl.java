@@ -2,7 +2,7 @@ package za.co.entelect.dojo.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import za.co.entelect.dojo.Card;
+import za.co.entelect.dojo.domain.Card;
 
 @Component
 public class CardServiceImpl implements CardService {
@@ -10,7 +10,7 @@ public class CardServiceImpl implements CardService {
     private long BANK_CHARGE = 200L;
 
     @Autowired
-    private ValidationService validationService;
+    private Track2DataValidationService track2DataValidationService;
 
     @Autowired
     private PinService pinService;
@@ -20,7 +20,7 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public void withdrawMoney(Card aCard, long transactionAmountInCents) {
-        validationService.validateTrackData(aCard.getTrack2());
+        track2DataValidationService.isValid(aCard.getTrack2());
         pinService.validatePin(aCard.getPinBlock(), aCard.getCardNumber());
         accountService.withdrawMoney(aCard, transactionAmountInCents, BANK_CHARGE);
     }

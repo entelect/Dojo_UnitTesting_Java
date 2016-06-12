@@ -1,6 +1,6 @@
 package za.co.entelect.dojo.service;
 
-import za.co.entelect.dojo.ex3.enums.CardValidationErrorType;
+import za.co.entelect.dojo.enums.CardValidationErrorType;
 import za.co.entelect.dojo.exceptions.ValidationException;
 
 public class PinServiceImpl implements PinService {

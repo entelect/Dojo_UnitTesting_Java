@@ -5,7 +5,7 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
-import za.co.entelect.dojo.Card;
+import za.co.entelect.dojo.domain.Card;
 import za.co.entelect.dojo.exceptions.AccountException;
 
 @ContextConfiguration(classes = IntegrationTestConfig.class)
@@ -13,7 +13,7 @@ import za.co.entelect.dojo.exceptions.AccountException;
 public class CardIntegrationTest {
 
     @Autowired
-    private ValidationService validationService;
+    private Track2DataValidationService track2DataValidationService;
 
     @Autowired
     private PinService pinService;

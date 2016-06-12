@@ -1,4 +1,4 @@
-package za.co.entelect.dojo;
+package za.co.entelect.dojo.domain;
 
 /**
  * Our domain object
