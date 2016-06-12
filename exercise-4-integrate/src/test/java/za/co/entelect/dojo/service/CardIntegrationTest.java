@@ -26,10 +26,10 @@ public class CardIntegrationTest {
 
     @Test(expected = AccountException.class)
     public void testInsufficientFunds() {
-        cardService.withdrawMoney(getCard(true,1d), 1d);
+        cardService.withdrawMoney(getCard(true,1L), 1L);
     }
 
-    private Card getCard(boolean validCardNumber, double balanceAvailable) {
+    private Card getCard(boolean validCardNumber, long balanceAvailable) {
         String cardNumber = "4929900481403641";
         if (!validCardNumber) {
             cardNumber = "4929900481403642";

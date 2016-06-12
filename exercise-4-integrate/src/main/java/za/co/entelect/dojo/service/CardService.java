@@ -4,5 +4,5 @@ import za.co.entelect.dojo.Card;
 
 public interface CardService {
 
-    void withdrawMoney(Card aCard, double transactionAmount);
+    void withdrawMoney(Card aCard, long transactionAmount);
 }

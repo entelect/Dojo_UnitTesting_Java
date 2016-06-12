@@ -43,7 +43,7 @@ public class CardServiceImplTest {
         /*doNothing().when(validationService).validateTrackData(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
         doNothing().when(accountService).withdrawMoney(any(Card.class), anyDouble(), anyDouble());*/
-        cardService.withdrawMoney(getCard(true,100L), 2d);
+        cardService.withdrawMoney(getCard(true,100L), 200L);
     }
 
     @Test
@@ -52,7 +52,7 @@ public class CardServiceImplTest {
         doNothing().when(pinService).validatePin(anyString(), anyString());
         doThrow(new AccountException(CardValidationErrorType.INSUFFICIENT_FUNDS)).when(accountService).withdrawMoney(any(Card.class), anyLong(), anyLong());
         try {
-            cardService.withdrawMoney(getCard(true,100L), 2d);
+            cardService.withdrawMoney(getCard(true,100L), 200L);
         } catch (AccountException e) {
             Assert.assertEquals(CardValidationErrorType.INSUFFICIENT_FUNDS, e.getCardValidationErrorType());
         }
@@ -63,7 +63,7 @@ public class CardServiceImplTest {
         doNothing().when(validationService).validateTrackData(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
         doThrow(new ValidationException(CardValidationErrorType.INVALID_PIN)).when(pinService).validatePin(anyString(),anyString());
-        cardService.withdrawMoney(getCard(true,100L), 2d);
+        cardService.withdrawMoney(getCard(true,100L), 200L);
     }
 
     @Test
@@ -72,7 +72,7 @@ public class CardServiceImplTest {
         doNothing().when(pinService).validatePin(anyString(), anyString());
         ArgumentCaptor<Card> argument = ArgumentCaptor.forClass(Card.class);
         Card card = getCard(true,100L);
-        cardService.withdrawMoney(card, 2d);
+        cardService.withdrawMoney(card, 200L);
         verify(accountService).withdrawMoney(argument.capture(), anyLong(), anyLong());
         Assert.assertEquals(argument.getValue().getTrack2(), card.getTrack2());
     }

@@ -7,7 +7,7 @@ import za.co.entelect.dojo.Card;
 @Component
 public class CardServiceImpl implements CardService {
 
-    private double BANK_CHARGE = 2D;
+    private long BANK_CHARGE = 200L;
 
     @Autowired
     private ValidationService validationService;
@@ -22,6 +22,6 @@ public class CardServiceImpl implements CardService {
     public void withdrawMoney(Card aCard, long transactionAmountInCents) {
         validationService.validateTrackData(aCard.getTrack2());
         pinService.validatePin(aCard.getPinBlock(), aCard.getCardNumber());
-        accountService.withdrawMoney(aCard, transactionAmount, BANK_CHARGE);
+        accountService.withdrawMoney(aCard, transactionAmountInCents, BANK_CHARGE);
     }
 }
