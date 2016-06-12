@@ -5,6 +5,7 @@ package za.co.entelect.dojo.domain;
  */
 public class Card {
 
+    private static final int CARD_END_INDEX = 16;
     private final String cardNumber;
     private final String pinBlock;
 
@@ -13,7 +14,7 @@ public class Card {
 
     public Card(String aTrack2, String aPinBlock, long aAvailableBalanceInCents) {
         track2 = aTrack2;
-        cardNumber = aTrack2.substring(1,17);
+        cardNumber = aTrack2.substring(0, CARD_END_INDEX);
         pinBlock = aPinBlock;
         availableBalanceInCents = aAvailableBalanceInCents;
     }

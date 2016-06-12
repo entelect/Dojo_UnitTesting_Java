@@ -38,7 +38,7 @@ public class CardServiceImplTest {
     }
 
     @Test
-    public void testHappyCase() {
+    public void testWithdrawMoneySuccess() {
         /*doNothing().when(validationService).validateTrackData(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
         doNothing().when(accountService).withdrawMoney(any(Card.class), anyDouble(), anyDouble());*/
@@ -47,7 +47,7 @@ public class CardServiceImplTest {
 
     @Test
     public void testInsufficientFunds() {
-        doNothing().when(track2DataValidationService).isValid(anyString());
+        when(track2DataValidationService.isValid(anyString())).thenReturn(true);
         doNothing().when(pinService).validatePin(anyString(), anyString());
         doThrow(new AccountException(CardValidationErrorType.INSUFFICIENT_FUNDS)).when(accountService).withdrawMoney(any(Card.class), anyLong(), anyLong());
         try {
@@ -59,7 +59,7 @@ public class CardServiceImplTest {
 
     @Test(expected = ValidationException.class)
     public void testInvalidPin() {
-        doNothing().when(track2DataValidationService).isValid(anyString());
+        when(track2DataValidationService.isValid(anyString())).thenReturn(true);
         doNothing().when(pinService).validatePin(anyString(), anyString());
         doThrow(new ValidationException(CardValidationErrorType.INVALID_PIN)).when(pinService).validatePin(anyString(),anyString());
         cardService.withdrawMoney(getCard(true,100L), 200L);
@@ -67,7 +67,7 @@ public class CardServiceImplTest {
 
     @Test
     public void testBankCharge() {
-        doNothing().when(track2DataValidationService).isValid(anyString());
+        when(track2DataValidationService.isValid(anyString())).thenReturn(true);
         doNothing().when(pinService).validatePin(anyString(), anyString());
         ArgumentCaptor<Card> argument = ArgumentCaptor.forClass(Card.class);
         Card card = getCard(true,100L);

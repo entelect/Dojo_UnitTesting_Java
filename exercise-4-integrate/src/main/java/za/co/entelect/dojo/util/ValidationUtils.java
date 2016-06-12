@@ -75,7 +75,7 @@ public class ValidationUtils {
             return false;
         }
 
-        Integer month = Integer.valueOf(dateString.substring(0, 2));
+        Integer month = Integer.valueOf(dateString.substring(2, 4));
 
         return month >= JAN && month <= DEC;
     }
