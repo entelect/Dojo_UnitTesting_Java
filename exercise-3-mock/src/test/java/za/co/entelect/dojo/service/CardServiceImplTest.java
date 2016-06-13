@@ -7,6 +7,26 @@ import org.mockito.runners.MockitoJUnitRunner;
 import za.co.entelect.dojo.domain.Card;
 import za.co.entelect.dojo.exceptions.AccountException;
 
+/**
+ * Exercise 3: Use mockito to the test the defined test cases.
+ *
+ * Syntax examples:
+ *
+ *  Mocking behavior
+ *
+ *  when(mock.methodName(anyString())).thenReturn(true);
+ *  doNothing().when(mock).methodName(anyString(), eq(someValue));
+ *  doThrow(new Exception()).when(mock).methodName(any(Card.class), anyLong(), anyLong());
+ *
+ *  Verify Behavior:
+ *
+ *  verify(mock).methodName(any(Clazz.class));
+ *
+ *  Argument Captor:
+ *
+ *  ArgumentCaptor<Object> argument = ArgumentCaptor.forClass(Class.class);
+ *  verify(mock).methodName(argument.capture());
+ */
 @RunWith(MockitoJUnitRunner.class)
 public class CardServiceImplTest {
 

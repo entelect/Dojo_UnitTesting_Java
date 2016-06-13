@@ -39,10 +39,15 @@ public class CardServiceImplTest {
 
     @Test
     public void testWithdrawMoneySuccess() {
-        /*doNothing().when(validationService).validateTrackData(anyString());
+        /*doNothing().when(track2DataValidationService).isValid(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
         doNothing().when(accountService).withdrawMoney(any(Card.class), anyDouble(), anyDouble());*/
-        cardService.withdrawMoney(getCard(true,100L), 200L);
+        Card card = getCard(true, 100L);
+        cardService.withdrawMoney(card, 200L);
+
+        verify(track2DataValidationService).isValid(anyString());
+        verify(pinService).validatePin(anyString(), anyString());
+        verify(accountService).withdrawMoney(eq(card), anyLong(), anyLong());
     }
 
     @Test
