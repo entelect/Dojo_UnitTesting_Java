@@ -16,7 +16,7 @@
     </properties>
 
     <modules>
-        <module>exercise-1-fix</module>
+        <module>exercise-1-verify</module>
         <module>exercise-2-tdd</module>
         <module>exercise-3-mock</module>
         <module>exercise-4-integrate</module>

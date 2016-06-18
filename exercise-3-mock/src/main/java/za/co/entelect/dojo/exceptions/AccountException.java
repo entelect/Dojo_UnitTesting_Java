@@ -1,15 +1,16 @@
 package za.co.entelect.dojo.exceptions;
 
-import za.co.entelect.dojo.ex3.enums.ResponseEnum;
+import za.co.entelect.dojo.enums.CardValidationErrorType;
 
 public class AccountException extends RuntimeException {
-    ResponseEnum responseEnum;
 
-    public AccountException(ResponseEnum aResponseEnum) {
-        responseEnum = aResponseEnum;
+    private CardValidationErrorType cardValidationErrorType;
+
+    public AccountException(CardValidationErrorType aCardValidationErrorType) {
+        cardValidationErrorType = aCardValidationErrorType;
     }
 
-    public ResponseEnum getResponseEnum() {
-        return responseEnum;
+    public CardValidationErrorType getCardValidationErrorType() {
+        return cardValidationErrorType;
     }
 }
