@@ -8,6 +8,7 @@ public class ValidationUtils {
     private static final int CREDIT_CARD_LENGTH = 16;
     public static final int DEC = 12;
     public static final int JAN = 1;
+    public static final int EXPIRTY_DATE_LENGTH = 4;
 
     static int[][] serviceCodeValues = new int[][]{
             {1,2,5,6,7,9},
@@ -72,7 +73,7 @@ public class ValidationUtils {
     }
 
     public static boolean isValidExpirationDate(String dateString) {
-        if(StringUtils.length(dateString) != 4){
+        if(StringUtils.length(dateString) != EXPIRTY_DATE_LENGTH){
             return false;
         }
 
