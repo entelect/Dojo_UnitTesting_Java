@@ -5,6 +5,7 @@ import org.apache.commons.lang3.StringUtils;
 public class ValidationUtils {
 
     private static final int SERVICE_CODE_LENGTH = 3;
+    private static final int CREDIT_CARD_LENGTH = 16;
     public static final int DEC = 12;
     public static final int JAN = 1;
 
@@ -16,6 +17,10 @@ public class ValidationUtils {
 
 
     public static boolean isValidCardNumber(String ccNumber) {
+        if (StringUtils.length(ccNumber) != CREDIT_CARD_LENGTH) {
+            return false;
+        }
+
         if(!isNumeric(ccNumber)){
             return false;
         }
