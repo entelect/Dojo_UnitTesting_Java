@@ -12,6 +12,14 @@ import za.co.entelect.dojo.exceptions.AccountException;
  *
  * Syntax examples:
  *
+ *  create mock
+ *  @Mock
+ *  private Service serviceMock
+ *
+ *  Inject mock
+ *  @InjectMocks
+ *  private Service service
+ *
  *  Mocking behavior
  *
  *  when(mock.methodName(anyString())).thenReturn(true);
@@ -33,6 +41,8 @@ public class CardServiceImplTest {
     //add mocks here
 
     //inject the mocks here
+
+
 
 
     @Before
