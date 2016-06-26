@@ -29,10 +29,6 @@ public class ValidationUtils {
         int sum = 0;
         boolean alternate = false;
 
-        if (ccNumber.length() > 19 || ccNumber.length() < 9) {
-            return false;
-        }
-
         for (int i = ccNumber.length() - 1; i >= 0; i--) {
             int n = Integer.parseInt(ccNumber.substring(i, i + 1));
             if (alternate) {
