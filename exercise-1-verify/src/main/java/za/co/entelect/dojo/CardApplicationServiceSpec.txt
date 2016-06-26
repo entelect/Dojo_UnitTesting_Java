@@ -2,7 +2,7 @@ Exercise 1:
 
 Create units test to verify the CardApplicationService fully complies to all the requirements (spoiler alert: there is a bug)
 
-The CardApplication determines if a client can be approved for a new credit card, it produces a result in the form of CardApplicationResult
+The CardApplication determines if a client will be approved for a new credit card, it produces a result in the form of CardApplicationResult
 which provides the output of the clients card application.
 
 There are two main types of clients, employed and and the riskier unemployed.
