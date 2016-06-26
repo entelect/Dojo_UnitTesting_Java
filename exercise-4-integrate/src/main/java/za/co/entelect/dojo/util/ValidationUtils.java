@@ -86,8 +86,8 @@ public class ValidationUtils {
         return month >= JAN && month <= DEC;
     }
 
-    private static boolean isNumeric(String dateString) {
-        for (char aChar : dateString.toCharArray()) {
+    private static boolean isNumeric(String check) {
+        for (char aChar : check.toCharArray()) {
             if(!Character.isDigit(aChar)){
                 return false;
             }

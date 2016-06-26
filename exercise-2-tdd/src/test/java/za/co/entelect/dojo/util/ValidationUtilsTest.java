@@ -25,23 +25,6 @@ public class ValidationUtilsTest {
     }
 
     @Test
-    public void testInvalidExpirationDate(){
-        assertFalse(ValidationUtils.isValidExpirationDate("YYMM"));
-        assertFalse(ValidationUtils.isValidExpirationDate("1"));
-        assertFalse(ValidationUtils.isValidExpirationDate("12345"));
-        assertFalse(ValidationUtils.isValidExpirationDate("0016"));
-        assertFalse(ValidationUtils.isValidExpirationDate("1300"));
-    }
-
-    @Test
-    public void testValidExpirationDate(){
-        assertTrue(ValidationUtils.isValidExpirationDate("1501"));
-        assertTrue(ValidationUtils.isValidExpirationDate("1612"));
-        assertTrue(ValidationUtils.isValidExpirationDate("1905"));
-        assertTrue(ValidationUtils.isValidExpirationDate("1901"));
-    }
-
-    @Test
     public void testInvalidServiceCode(){
         assertFalse(ValidationUtils.isValidServiceCode("1"));
         assertFalse(ValidationUtils.isValidServiceCode("1234"));
