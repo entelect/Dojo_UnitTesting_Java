@@ -82,9 +82,7 @@ public class CardServiceImplTest {
     }
 
     private void resetAll() {
-        reset(track2DataValidationService);
-        reset(pinService);
-        reset(accountService);
+        reset(track2DataValidationService, pinService, accountService);
     }
 
     private Card getCard(boolean validCardNumber, long balanceAvailable) {
