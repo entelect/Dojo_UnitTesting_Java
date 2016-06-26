@@ -27,8 +27,7 @@ In order of appearance:
     - Use the provided service-code checker
     - throw ValidationException(INVALID_SERVICE_CODE)
     invalid service codes
-        1
-        1234
+        123
         AAA
         589
         228
