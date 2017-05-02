@@ -9,27 +9,23 @@ import za.co.entelect.dojo.enums.CardApplicationResult;
 public class CardApplicationServiceImpl implements CardApplicationService {
 
     private long MIN_EMPLOYED_BALANCE_IN_CENTS = 5_000_00;
-    private long MIN_UNEMPLOYED_BALANCE_IN_CENTS = 10_000_00;
 
     private int MAX_EMPLOYED_OVERDRAFT_ACCOUNT_ALLOWED = 1;
 
-    public CardApplicationResult applyForCreditCard(boolean isEmployed, BankAccount... bankAccounts){
+    public CardApplicationResult applyForCreditCard(BankAccount... bankAccounts){
         if(hasBankAccount(bankAccounts)){
             return CardApplicationResult.NO_BANK_ACCOUNT_DECLINED;
         }
 
         int numAccountsInOverdraft = getNumAccountInOverdraft(bankAccounts);
 
-        if(!isEmployed && numAccountsInOverdraft > 0){
-            return CardApplicationResult.UNEMPLOYED_OVERDRAFT_DECLINED;
-        }
-        if(isEmployed && numAccountsInOverdraft > MAX_EMPLOYED_OVERDRAFT_ACCOUNT_ALLOWED){
-            return CardApplicationResult.EMPLOYED_OVERDRAFT_DECLINED;
+        if(numAccountsInOverdraft > MAX_EMPLOYED_OVERDRAFT_ACCOUNT_ALLOWED){
+            return CardApplicationResult.OVERDRAFT_DECLINED;
         }
 
         long totalBalance = getTotalBalance(bankAccounts);
 
-        if((!isEmployed && totalBalance < MIN_UNEMPLOYED_BALANCE_IN_CENTS) ||  (isEmployed && totalBalance < MIN_EMPLOYED_BALANCE_IN_CENTS)){
+        if(totalBalance < MIN_EMPLOYED_BALANCE_IN_CENTS){
             return CardApplicationResult.MIN_BALANCE_DECLINED;
         }
 

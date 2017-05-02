@@ -8,9 +8,6 @@ import static junit.framework.TestCase.assertEquals;
 
 public class CardApplicationServiceTest {
 
-    private static final boolean UNEMPLOYED = false;
-    private static final boolean EMPLOYED = true;
-
     private static final BankAccount TEST_BANK_ACCOUNT_BALANCE_4999 = new BankAccount(4999_49);
     private static final BankAccount TEST_BANK_ACCOUNT_BALANCE_5000 = new BankAccount(5000_00);
     private static final BankAccount TEST_BANK_ACCOUNT_BALANCE_10000 = new BankAccount(10_000_00);
@@ -22,72 +19,38 @@ public class CardApplicationServiceTest {
     @Test
     public void testNoBankAccountDeclined(){
         assertEquals( CardApplicationResult.NO_BANK_ACCOUNT_DECLINED,
-                cardApplicationService.applyForCreditCard(EMPLOYED, null));
+                cardApplicationService.applyForCreditCard(null));
 
         assertEquals(CardApplicationResult.NO_BANK_ACCOUNT_DECLINED,
-                cardApplicationService.applyForCreditCard(EMPLOYED));
+                cardApplicationService.applyForCreditCard());
     }
 
     @Test
-    public void testUnemployedOverdraftDeclined(){
-        assertEquals(CardApplicationResult.UNEMPLOYED_OVERDRAFT_DECLINED,
-                cardApplicationService.applyForCreditCard(UNEMPLOYED,
-                        TEST_BANK_ACCOUNT_BALANCE_NEGATIVE_1, TEST_BANK_ACCOUNT_BALANCE_LOADED));
+    public void testTooManyAccountsInOverdraft(){
+        assertEquals(CardApplicationResult.OVERDRAFT_DECLINED,
+                cardApplicationService.applyForCreditCard(TEST_BANK_ACCOUNT_BALANCE_NEGATIVE_1, TEST_BANK_ACCOUNT_BALANCE_NEGATIVE_1, TEST_BANK_ACCOUNT_BALANCE_10000));
+
+        assertEquals(CardApplicationResult.OVERDRAFT_DECLINED,
+                cardApplicationService.applyForCreditCard(TEST_BANK_ACCOUNT_BALANCE_NEGATIVE_1, TEST_BANK_ACCOUNT_BALANCE_NEGATIVE_1, TEST_BANK_ACCOUNT_BALANCE_LOADED));
     }
 
     @Test
-    public void testEmployedToManyAccountsInOverdraft(){
-        assertEquals(CardApplicationResult.EMPLOYED_OVERDRAFT_DECLINED,
-                cardApplicationService.applyForCreditCard(EMPLOYED,
-                        TEST_BANK_ACCOUNT_BALANCE_NEGATIVE_1, TEST_BANK_ACCOUNT_BALANCE_NEGATIVE_1, TEST_BANK_ACCOUNT_BALANCE_10000));
-
-        assertEquals(CardApplicationResult.EMPLOYED_OVERDRAFT_DECLINED,
-                cardApplicationService.applyForCreditCard(EMPLOYED,
-                        TEST_BANK_ACCOUNT_BALANCE_NEGATIVE_1, TEST_BANK_ACCOUNT_BALANCE_NEGATIVE_1, TEST_BANK_ACCOUNT_BALANCE_LOADED));
-    }
-
-    @Test
-    public void testUnemployedMinBalanceDeclined(){
+    public void testMinBalanceDeclined(){
         assertEquals(CardApplicationResult.MIN_BALANCE_DECLINED,
-                cardApplicationService.applyForCreditCard(UNEMPLOYED,
-                        TEST_BANK_ACCOUNT_BALANCE_5000));
+                cardApplicationService.applyForCreditCard(TEST_BANK_ACCOUNT_BALANCE_4999));
 
         assertEquals(CardApplicationResult.MIN_BALANCE_DECLINED,
-                cardApplicationService.applyForCreditCard(UNEMPLOYED,
+                cardApplicationService.applyForCreditCard(TEST_BANK_ACCOUNT_BALANCE_5000, TEST_BANK_ACCOUNT_BALANCE_NEGATIVE_1));
+    }
+
+    @Test
+    public void testApproved(){
+        assertEquals(CardApplicationResult.APPROVED,
+                cardApplicationService.applyForCreditCard(TEST_BANK_ACCOUNT_BALANCE_5000));
+
+        assertEquals(CardApplicationResult.APPROVED,
+                cardApplicationService.applyForCreditCard(TEST_BANK_ACCOUNT_BALANCE_NEGATIVE_1,
                         TEST_BANK_ACCOUNT_BALANCE_5000, TEST_BANK_ACCOUNT_BALANCE_4999));
-    }
-
-    @Test
-    public void testEmployedMinBalanceDeclined(){
-        assertEquals(CardApplicationResult.MIN_BALANCE_DECLINED,
-                cardApplicationService.applyForCreditCard(EMPLOYED,
-                        TEST_BANK_ACCOUNT_BALANCE_4999));
-
-        assertEquals(CardApplicationResult.MIN_BALANCE_DECLINED,
-                cardApplicationService.applyForCreditCard(EMPLOYED,
-                        TEST_BANK_ACCOUNT_BALANCE_5000, TEST_BANK_ACCOUNT_BALANCE_NEGATIVE_1));
-    }
-
-    @Test
-    public void testUnEmployedApproved(){
-        assertEquals(CardApplicationResult.APPROVED,
-                cardApplicationService.applyForCreditCard(UNEMPLOYED,
-                        TEST_BANK_ACCOUNT_BALANCE_5000, TEST_BANK_ACCOUNT_BALANCE_5000));
-
-        assertEquals(CardApplicationResult.APPROVED,
-                cardApplicationService.applyForCreditCard(UNEMPLOYED,
-                        TEST_BANK_ACCOUNT_BALANCE_10000));
-    }
-
-    @Test
-    public void testEmployedApproved(){
-        assertEquals(CardApplicationResult.APPROVED,
-                cardApplicationService.applyForCreditCard(EMPLOYED,
-                        TEST_BANK_ACCOUNT_BALANCE_5000));
-
-        assertEquals(CardApplicationResult.APPROVED,
-                cardApplicationService.applyForCreditCard(EMPLOYED,
-                        TEST_BANK_ACCOUNT_BALANCE_NEGATIVE_1, TEST_BANK_ACCOUNT_BALANCE_5000, TEST_BANK_ACCOUNT_BALANCE_4999));
     }
 
 }
