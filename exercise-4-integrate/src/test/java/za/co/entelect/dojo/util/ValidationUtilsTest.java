@@ -39,21 +39,4 @@ public class ValidationUtilsTest {
         assertTrue(ValidationUtils.isValidExpirationDate("1905"));
         assertTrue(ValidationUtils.isValidExpirationDate("1901"));
     }
-
-    @Test
-    public void testInvalidServiceCode(){
-        assertFalse(ValidationUtils.isValidServiceCode("1"));
-        assertFalse(ValidationUtils.isValidServiceCode("1234"));
-        assertFalse(ValidationUtils.isValidServiceCode("AAA"));
-        assertFalse(ValidationUtils.isValidServiceCode("589"));
-        assertFalse(ValidationUtils.isValidServiceCode("228"));
-    }
-
-    @Test
-    public void testValidServiceCode(){
-        assertTrue(ValidationUtils.isValidServiceCode("947"));
-        assertTrue(ValidationUtils.isValidServiceCode("542"));
-        assertTrue(ValidationUtils.isValidServiceCode("100"));
-    }
-
 }

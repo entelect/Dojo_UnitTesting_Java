@@ -10,11 +10,9 @@ import za.co.entelect.dojo.util.ValidationUtils;
 public class Track2DataValidationServiceImpl implements Track2DataValidationService {
 
     private static final int CARD_END_INDEX = 16;
-    private static final int TRACK2_LENGTH = 23;
+    private static final int TRACK2_LENGTH = 20;
     private static final int MONTH_START = 16;
     private static final int MONTH_END = 20;
-    private static final int SERVICE_START_INDEX = 20;
-    private static final int SERVICE_END_INDEX = 23;
 
     @Override
     public boolean isValid(String track2Number) {
@@ -27,9 +25,6 @@ public class Track2DataValidationServiceImpl implements Track2DataValidationServ
         }
         if(!ValidationUtils.isValidExpirationDate(track2Number.substring(MONTH_START, MONTH_END))){
             throw new ValidationException(CardValidationErrorType.INVALID_EXP_DATE);
-        }
-        if(!ValidationUtils.isValidServiceCode(track2Number.substring(SERVICE_START_INDEX, SERVICE_END_INDEX))){
-            throw new ValidationException(CardValidationErrorType.INVALID_SERVICE_CODE);
         }
 
         return true;
