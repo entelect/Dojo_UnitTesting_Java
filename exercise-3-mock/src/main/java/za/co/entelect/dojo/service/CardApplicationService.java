@@ -8,6 +8,6 @@ import za.co.entelect.dojo.enums.CardApplicationResult;
  */
 public interface CardApplicationService {
 
-    CardApplicationResult applyForCreditCard(boolean employed, BankAccount... bankAccounts);
+    CardApplicationResult applyForCreditCard(BankAccount... bankAccounts);
 
 }
