@@ -20,7 +20,7 @@ public class CardApplicationServiceImpl implements CardApplicationService {
         int numAccountsInOverdraft = getNumAccountInOverdraft(bankAccounts);
 
         if(numAccountsInOverdraft > MAX_EMPLOYED_OVERDRAFT_ACCOUNT_ALLOWED){
-            return CardApplicationResult.EMPLOYED_OVERDRAFT_DECLINED;
+            return CardApplicationResult.OVERDRAFT_DECLINED;
         }
 
         long totalBalance = getTotalBalance(bankAccounts);
