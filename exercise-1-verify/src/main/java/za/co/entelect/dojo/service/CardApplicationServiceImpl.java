@@ -25,7 +25,7 @@ public class CardApplicationServiceImpl implements CardApplicationService {
 
         long totalBalance = getTotalBalance(bankAccounts);
 
-        if(totalBalance < MIN_EMPLOYED_BALANCE_IN_CENTS){
+        if(totalBalance > MIN_EMPLOYED_BALANCE_IN_CENTS){
             return CardApplicationResult.MIN_BALANCE_DECLINED;
         }
 
