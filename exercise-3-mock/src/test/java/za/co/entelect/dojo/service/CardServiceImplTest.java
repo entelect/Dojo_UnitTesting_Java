@@ -90,7 +90,7 @@ public class CardServiceImplTest {
         if (!validCardNumber) {
             cardNumber = "4929900481403642";
         }
-        String track2 = cardNumber + "1703101";
+        String track2 = cardNumber + "1703";
         String pinBlock = "FF" + cardNumber;
         return new Card(track2,pinBlock, balanceAvailableInCents);
     }
