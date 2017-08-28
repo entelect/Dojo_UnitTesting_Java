@@ -3,6 +3,8 @@ package za.co.entelect.dojo.service;
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.mockito.InjectMocks;
+import org.mockito.Mock;
 import org.mockito.runners.MockitoJUnitRunner;
 import za.co.entelect.dojo.domain.Card;
 import za.co.entelect.dojo.exceptions.AccountException;
@@ -39,8 +41,13 @@ import za.co.entelect.dojo.exceptions.AccountException;
 public class CardServiceImplTest {
 
     //add mocks here
+    @Mock
+    private AccountService accountService;
 
+    @InjectMocks
     //inject the mocks here
+    private CardService cardService = new CardServiceImpl();
+
 
 
 
@@ -53,6 +60,7 @@ public class CardServiceImplTest {
     @Test
     public void testWithdrawMoneySuccess() {
         // void methods in services to do NOTHING
+        // verify that the services where called
     }
 
     @Test
