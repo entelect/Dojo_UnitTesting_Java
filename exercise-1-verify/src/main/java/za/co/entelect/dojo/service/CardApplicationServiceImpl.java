@@ -10,37 +10,18 @@ public class CardApplicationServiceImpl implements CardApplicationService {
 
     private long MIN_EMPLOYED_BALANCE_IN_CENTS = 5_000_00;
 
-    private int MAX_EMPLOYED_OVERDRAFT_ACCOUNT_ALLOWED = 1;
-
     public CardApplicationResult applyForCreditCard(BankAccount... bankAccounts){
         if(hasBankAccount(bankAccounts)){
             return CardApplicationResult.NO_BANK_ACCOUNT_DECLINED;
         }
 
-        int numAccountsInOverdraft = getNumAccountInOverdraft(bankAccounts);
-
-        if(numAccountsInOverdraft > MAX_EMPLOYED_OVERDRAFT_ACCOUNT_ALLOWED){
-            return CardApplicationResult.OVERDRAFT_DECLINED;
-        }
-
         long totalBalance = getTotalBalance(bankAccounts);
 
         if(totalBalance > MIN_EMPLOYED_BALANCE_IN_CENTS){
-            return CardApplicationResult.MIN_BALANCE_DECLINED;
+            return CardApplicationResult.APPROVED;
         }
 
         return CardApplicationResult.APPROVED;
-    }
-
-    private int getNumAccountInOverdraft(BankAccount[] bankAccounts) {
-        int overdraftAccountCount = 0;
-        for (BankAccount bankAccount : bankAccounts) {
-            if(!bankAccount.hasPositiveBalance()){
-                overdraftAccountCount++;
-            }
-        }
-
-        return overdraftAccountCount;
     }
 
     private long getTotalBalance(BankAccount[] bankAccounts) {

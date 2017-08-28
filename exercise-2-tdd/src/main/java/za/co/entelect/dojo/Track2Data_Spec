@@ -14,14 +14,14 @@ In order of appearance:
     - Use the provided card number checker
     - throw ValidationException(INVALID_CARD)
     invalid card numbers:
-                7987954151321654
                 NOT_A_NUMBER__:<
-                4498484616416544
+                44984846164165441234
+                1234
     valid card numbers :
-                4388576019611022
-                4388576019611030
-                5388576018900076
-                5388576018900084
+                1388576019611022
+                2388576019611030
+                3388576018900076
+                4388576018900084
 - Expiration date of card in format YYMM
     - throw ValidationException(INVALID_EXP_DATE)
 
