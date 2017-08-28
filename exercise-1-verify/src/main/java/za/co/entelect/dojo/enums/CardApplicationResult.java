@@ -7,7 +7,6 @@ public enum CardApplicationResult {
 
     APPROVED(true),
     NO_BANK_ACCOUNT_DECLINED(false),
-    OVERDRAFT_DECLINED(false),
     MIN_BALANCE_DECLINED(false);
 
     private boolean approved;

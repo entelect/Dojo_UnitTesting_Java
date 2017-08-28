@@ -7,8 +7,7 @@ public enum CardValidationErrorType {
 
     TRACK2_INVALID_LENGTH("01", "Track 2 data is too short or too long"),
     INVALID_CARD("02", "Invalid card number received"),
-    INVALID_EXP_DATE("03", "Invalid expiry date"),
-    INVALID_SERVICE_CODE("04", "Invalid service code");
+    INVALID_EXP_DATE("03", "Invalid expiry date");
 
     private String code;
     private String message;

@@ -8,7 +8,6 @@ which provides the output of the clients card application.
 If no bank accounts are supplied the service will respond with: CardApplicationResult.NO_BANK_ACCOUNT_DECLINED
 
 Details :
-    A client is allowed no more than 1 account with a negative balance otherwise the service will respond with : CardApplicationResult.OVERDRAFT_DECLINED
     A client must have a total balance of 5000 or more otherwise the service will respond with : CardApplicationResult.MIN_BALANCE_DECLINED
 
 If all conditions are met the service will respond with CardApplicationResult.APPROVED

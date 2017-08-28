@@ -12,7 +12,6 @@ public class Track2DataValidationServiceTest {
 
     private static final String VALID_CARD_NUMBER_1 = "4388576019611022";
     private static final String VALID_CARD_NUMBER_2 = "5388576018900076";
-    private static final String INVALID_CARD_NUMBER = "4498484616416544";
     private static final String VALID_EXP_DATE = "1601";
     private static final String INVALID_VALID_EXP_DATE = "1316";
 
@@ -26,11 +25,6 @@ public class Track2DataValidationServiceTest {
     @Test
     public void testNumberTooLong(){
         checkForException("TOOOOOOOOOOOOOOOOOOOOOLong", "Expected invalid length", CardValidationErrorType.TRACK2_INVALID_LENGTH);
-    }
-
-    @Test
-    public void testInvalidCardNumber(){
-        checkForException(INVALID_CARD_NUMBER + VALID_EXP_DATE, "Expected invalid card number", CardValidationErrorType.INVALID_CARD);
     }
 
     @Test

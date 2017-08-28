@@ -13,7 +13,6 @@ public class ValidationUtilsTest {
         assertFalse(ValidationUtils.isValidCardNumber("5454"));
         assertFalse(ValidationUtils.isValidCardNumber("7987954151321654654844984984"));
         assertFalse(ValidationUtils.isValidCardNumber("NOT_A_NUMBER__:<"));
-        assertFalse(ValidationUtils.isValidCardNumber("4498484616416544"));
     }
 
     @Test

@@ -88,7 +88,7 @@ public class CardServiceImplTest {
     private Card getCard(boolean validCardNumber, long balanceAvailable) {
         String cardNumber = "4929900481403641";
         if (!validCardNumber) {
-            cardNumber = "4929900481403642";
+            cardNumber = "492990048140";
         }
         String track2 = cardNumber + "1703101";
         String pinBlock = "FF" + cardNumber;
