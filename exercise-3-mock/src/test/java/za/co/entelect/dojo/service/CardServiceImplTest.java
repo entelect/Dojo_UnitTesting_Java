@@ -9,6 +9,8 @@ import org.mockito.runners.MockitoJUnitRunner;
 import za.co.entelect.dojo.domain.Card;
 import za.co.entelect.dojo.exceptions.AccountException;
 
+import static org.mockito.Mockito.reset;
+
 /**
  * Exercise 3: Use mockito to the test the defined test cases.
  *
@@ -91,6 +93,7 @@ public class CardServiceImplTest {
 
     private void resetAll() {
         //call reset for all mocks
+        reset(accountService);
     }
 
     private Card getCard(boolean validCardNumber, long balanceAvailableInCents) {
