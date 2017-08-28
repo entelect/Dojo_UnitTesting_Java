@@ -15,7 +15,7 @@ In order of appearance:
     - throw ValidationException(INVALID_CARD)
     invalid card numbers:
                 NOT_A_NUMBER__:<
-                44984846164165441234
+                XX98484616416544
                 1234
     valid card numbers :
                 1388576019611022
