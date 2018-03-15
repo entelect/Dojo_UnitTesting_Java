@@ -21,7 +21,7 @@ public class DomainTest {
 
     @Test
     public void testException() {
-        ValidationException exception = new ValidationException(CardValidationErrorType.TRACK2_INVALID_LENGTH);
-        assertEquals(CardValidationErrorType.TRACK2_INVALID_LENGTH, exception.getCardValidationErrorType());
+        ValidationException exception = new ValidationException(CardValidationErrorType.CARD_DATA_INVALID_LENGTH);
+        assertEquals(CardValidationErrorType.CARD_DATA_INVALID_LENGTH, exception.getCardValidationErrorType());
     }
 }

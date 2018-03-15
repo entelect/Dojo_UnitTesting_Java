@@ -8,23 +8,23 @@ import static junit.framework.Assert.assertTrue;
 import static junit.framework.Assert.fail;
 import static org.junit.Assert.assertEquals;
 
-public class Track2DataValidationServiceTest {
+public class CardDataValidationServiceTest {
 
     private static final String VALID_CARD_NUMBER_1 = "4388576019611022";
     private static final String VALID_CARD_NUMBER_2 = "5388576018900076";
     private static final String VALID_EXP_DATE = "1601";
     private static final String INVALID_VALID_EXP_DATE = "1316";
 
-    private Track2DataValidationService service = new Track2DataValidationServiceImpl();
+    private CardDataValidationService service = new CardDataValidationServiceImpl();
 
     @Test
     public void testNumberTooShort(){
-        checkForException("TOOSHORT", "Expected invalid length", CardValidationErrorType.TRACK2_INVALID_LENGTH);
+        checkForException("TOOSHORT", "Expected invalid length", CardValidationErrorType.CARD_DATA_INVALID_LENGTH);
     }
 
     @Test
     public void testNumberTooLong(){
-        checkForException("TOOOOOOOOOOOOOOOOOOOOOLong", "Expected invalid length", CardValidationErrorType.TRACK2_INVALID_LENGTH);
+        checkForException("TOOOOOOOOOOOOOOOOOOOOOLong", "Expected invalid length", CardValidationErrorType.CARD_DATA_INVALID_LENGTH);
     }
 
     @Test
@@ -33,17 +33,18 @@ public class Track2DataValidationServiceTest {
     }
 
     @Test
-    public void testValidTrack2Number(){
+    public void testValidCardData(){
         assertTrue(service.isValid(VALID_CARD_NUMBER_1 + VALID_EXP_DATE));
         assertTrue(service.isValid(VALID_CARD_NUMBER_2 + VALID_EXP_DATE));
     }
 
-    private void checkForException(String track2Number, String message, CardValidationErrorType expectedCardValidationErrorType) {
+    private void checkForException(String cardData, String message, CardValidationErrorType expectedCardValidationErrorType) {
         try{
-            service.isValid(track2Number);
+            service.isValid(cardData);
             fail(message);
         }catch(ValidationException e){
             assertEquals(expectedCardValidationErrorType, e.getCardValidationErrorType());
         }
     }
+
 }

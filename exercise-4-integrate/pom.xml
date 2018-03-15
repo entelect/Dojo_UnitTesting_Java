@@ -13,18 +13,18 @@
     <packaging>jar</packaging>
 
     <name>exercise4</name>
-    <url>https://bitbucket.org/pieterbo-entelect/dojo-unittest</url>
+    <url>https://github.com/entelect/Dojo_UnitTesting_Java</url>
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <springframework.version>4.2.6.RELEASE</springframework.version>
+        <springframework.version>5.0.4.RELEASE</springframework.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>org.apache.commons</groupId>
             <artifactId>commons-lang3</artifactId>
-            <version>3.4</version>
+            <version>${commons-lang3.version}</version>
         </dependency>
         <dependency>
             <groupId>junit</groupId>
@@ -61,7 +61,7 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-compiler-plugin</artifactId>
-                    <version>3.3</version>
+                    <version>${maven-compiler-plugin.version}</version>
                     <configuration>
                         <source>1.7</source>
                         <target>1.7</target>

@@ -2,6 +2,9 @@ package za.co.entelect.dojo.service;
 
 import org.junit.Test;
 import za.co.entelect.dojo.domain.BankAccount;
+import za.co.entelect.dojo.enums.CardApplicationResult;
+
+import static junit.framework.TestCase.assertEquals;
 
 public class CardApplicationServiceTest {
 
@@ -11,7 +14,8 @@ public class CardApplicationServiceTest {
 
     @Test
     public void testNoBankAccountDeclined(){
-        //assertEquals(); NO_BANK_ACCOUNT_DECLINED
+        assertEquals(CardApplicationResult.NO_BANK_ACCOUNT_DECLINED, cardApplicationService.applyForCreditCard(null));
+        //todo: Add more asserts here
     }
 
     // todo: Add more tests...

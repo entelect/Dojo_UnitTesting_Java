@@ -21,7 +21,7 @@ import static org.mockito.Mockito.*;
 public class CardServiceImplTest {
 
     @Mock
-    private Track2DataValidationService track2DataValidationService;
+    private CardDataValidationService cardDataValidationService;
 
     @Mock
     private PinService pinService;
@@ -39,20 +39,20 @@ public class CardServiceImplTest {
 
     @Test
     public void testWithdrawMoneySuccess() {
-        /*doNothing().when(track2DataValidationService).isValid(anyString());
+        /*doNothing().when(cardDataValidationService).isValid(anyString());
         doNothing().when(pinService).validatePin(anyString(), anyString());
         doNothing().when(accountService).withdrawMoney(any(Card.class), anyDouble(), anyDouble());*/
         Card card = getCard(true, 100L);
         cardService.withdrawMoney(card, 200L);
 
-        verify(track2DataValidationService).isValid(anyString());
+        verify(cardDataValidationService).isValid(anyString());
         verify(pinService).validatePin(anyString(), anyString());
         verify(accountService).withdrawMoney(eq(card), anyLong(), anyLong());
     }
 
     @Test
     public void testInsufficientFunds() {
-        when(track2DataValidationService.isValid(anyString())).thenReturn(true);
+        when(cardDataValidationService.isValid(anyString())).thenReturn(true);
         doNothing().when(pinService).validatePin(anyString(), anyString());
         doThrow(new AccountException(CardValidationErrorType.INSUFFICIENT_FUNDS)).when(accountService).withdrawMoney(any(Card.class), anyLong(), anyLong());
         try {
@@ -64,7 +64,7 @@ public class CardServiceImplTest {
 
     @Test(expected = ValidationException.class)
     public void testInvalidPin() {
-        when(track2DataValidationService.isValid(anyString())).thenReturn(true);
+        when(cardDataValidationService.isValid(anyString())).thenReturn(true);
         doNothing().when(pinService).validatePin(anyString(), anyString());
         doThrow(new ValidationException(CardValidationErrorType.INVALID_PIN)).when(pinService).validatePin(anyString(),anyString());
         cardService.withdrawMoney(getCard(true,100L), 200L);
@@ -72,17 +72,17 @@ public class CardServiceImplTest {
 
     @Test
     public void testBankCharge() {
-        when(track2DataValidationService.isValid(anyString())).thenReturn(true);
+        when(cardDataValidationService.isValid(anyString())).thenReturn(true);
         doNothing().when(pinService).validatePin(anyString(), anyString());
         ArgumentCaptor<Card> argument = ArgumentCaptor.forClass(Card.class);
         Card card = getCard(true,100L);
         cardService.withdrawMoney(card, 200L);
         verify(accountService).withdrawMoney(argument.capture(), anyLong(), anyLong());
-        Assert.assertEquals(argument.getValue().getTrack2(), card.getTrack2());
+        Assert.assertEquals(argument.getValue().getCardData(), card.getCardData());
     }
 
     private void resetAll() {
-        reset(track2DataValidationService, pinService, accountService);
+        reset(cardDataValidationService, pinService, accountService);
     }
 
     private Card getCard(boolean validCardNumber, long balanceAvailable) {
@@ -90,8 +90,8 @@ public class CardServiceImplTest {
         if (!validCardNumber) {
             cardNumber = "492990048140";
         }
-        String track2 = cardNumber + "1703101";
+        String cardData = cardNumber + "1703101";
         String pinBlock = "FF" + cardNumber;
-        return new Card(track2,pinBlock, balanceAvailable);
+        return new Card(cardData,pinBlock, balanceAvailable);
     }
 }
