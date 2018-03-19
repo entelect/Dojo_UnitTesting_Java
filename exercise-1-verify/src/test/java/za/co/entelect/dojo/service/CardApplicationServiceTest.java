@@ -5,7 +5,7 @@ import za.co.entelect.dojo.domain.BankAccount;
 
 public class CardApplicationServiceTest {
 
-    private static final BankAccount TEST_BANK_ACCOUNT_BALANCE_4999 = new BankAccount(5000_00);
+    private static final BankAccount TEST_BANK_ACCOUNT_BALANCE_4999 = new BankAccount(4999_00);
 
     private CardApplicationService cardApplicationService = new CardApplicationServiceImpl();
 
