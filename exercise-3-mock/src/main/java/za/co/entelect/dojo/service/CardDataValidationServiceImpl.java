@@ -6,23 +6,23 @@ import za.co.entelect.dojo.exceptions.ValidationException;
 import za.co.entelect.dojo.util.ValidationUtils;
 
 
-public class Track2DataValidationServiceImpl implements Track2DataValidationService {
+public class CardDataValidationServiceImpl implements CardDataValidationService {
 
     private static final int CARD_END_INDEX = 16;
-    private static final int TRACK2_LENGTH = 20;
+    private static final int CARD_DATA_LENGTH = 20;
     private static final int MONTH_START = 16;
     private static final int MONTH_END = 20;
 
     @Override
-    public boolean isValid(String track2Number) {
+    public boolean isValid(String cardData) {
 
-        if(StringUtils.length(track2Number) != TRACK2_LENGTH){
-            throw new ValidationException(CardValidationErrorType.TRACK2_INVALID_LENGTH);
+        if(StringUtils.length(cardData) != CARD_DATA_LENGTH){
+            throw new ValidationException(CardValidationErrorType.CARD_DATA_INVALID_LENGTH);
         }
-        if(!ValidationUtils.isValidCardNumber(track2Number.substring(0, CARD_END_INDEX))){
+        if(!ValidationUtils.isValidCardNumber(cardData.substring(0, CARD_END_INDEX))){
             throw new ValidationException(CardValidationErrorType.INVALID_CARD);
         }
-        if(!ValidationUtils.isValidExpirationDate(track2Number.substring(MONTH_START, MONTH_END))){
+        if(!ValidationUtils.isValidExpirationDate(cardData.substring(MONTH_START, MONTH_END))){
             throw new ValidationException(CardValidationErrorType.INVALID_EXP_DATE);
         }
 

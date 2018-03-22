@@ -10,7 +10,7 @@ public class CardServiceImpl implements CardService {
     private long BANK_CHARGE = 200L;
 
     @Autowired
-    private Track2DataValidationService track2DataValidationService;
+    private CardDataValidationService CardDataValidationService;
 
     @Autowired
     private PinService pinService;
@@ -20,7 +20,7 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public void withdrawMoney(Card aCard, long transactionAmountInCents) {
-        track2DataValidationService.isValid(aCard.getTrack2());
+        CardDataValidationService.isValid(aCard.getCardData());
         pinService.validatePin(aCard.getPinBlock(), aCard.getCardNumber());
         accountService.withdrawMoney(aCard, transactionAmountInCents, BANK_CHARGE);
     }

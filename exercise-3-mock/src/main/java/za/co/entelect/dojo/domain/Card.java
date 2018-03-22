@@ -9,22 +9,22 @@ public class Card {
     private final String cardNumber;
     private final String pinBlock;
 
-    private String track2;
+    private String cardData;
     private long availableBalanceInCents;
 
-    public Card(String aTrack2, String aPinBlock, long aAvailableBalanceInCents) {
-        track2 = aTrack2;
-        cardNumber = aTrack2.substring(0, CARD_END_INDEX);
+    public Card(String cardData, String aPinBlock, long aAvailableBalanceInCents) {
+        this.cardData = cardData;
+        cardNumber = cardData.substring(0, CARD_END_INDEX);
         pinBlock = aPinBlock;
         availableBalanceInCents = aAvailableBalanceInCents;
     }
 
-    public String getTrack2() {
-        return track2;
+    public String getCardData() {
+        return cardData;
     }
 
-    public void setTrack2(String aTrack2) {
-        track2 = aTrack2;
+    public void setCardData(String cardData) {
+        this.cardData = cardData;
     }
 
     public String getCardNumber() {

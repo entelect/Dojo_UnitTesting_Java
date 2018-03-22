@@ -1,6 +1,6 @@
 Exercise 2:
 
-Use test driven development to create a Track 2 number validation service (Track2DataValidationServiceImpl),
+Use test driven development to create a credit card data validation service (CardDataValidationServiceImpl),
 the methods in ValidationUtils can assist you:
     - Create a set of a unit tests to check both the positive and negative case of each item in the spec.
     - Once a set of failing tests has been created, the logic for the validator can implemented.
@@ -8,8 +8,8 @@ the methods in ValidationUtils can assist you:
     - Once all tests are green build to the project to ensure you have reached 80% line and branch coverage, or the build will fail.
 
 In order of appearance:
-- Track 2 data must be of certain length : 20 characters
-    - throw ValidationException(CardValidationErrorType.TRACK2_INVALID_LENGTH)
+- Card data must be of certain length : 20 characters
+    - throw ValidationException(CardValidationErrorType.CARD_DATA_INVALID_LENGTH)
 - Card number, 16 digits; must be valid
     - Use the provided card number checker
     - throw ValidationException(INVALID_CARD)
@@ -26,4 +26,4 @@ In order of appearance:
     - throw ValidationException(INVALID_EXP_DATE)
 
 
-Valid Track2: 43885760196110300612
+Valid CreditCard Data: 43885760196110300612
